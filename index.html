@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>伴祐次 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>伴祐次 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 一般財団法人地域・教育魅力化プラットフォーム</a>
+  <a href="#k2">2. 株式会社キズキ</a>
+  <a href="#k3">3. 株式会社Schoo</a>
+  <a href="#k4">4. 株式会社ポピンズシッター</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">教育改革プロジェクト　ディレクター</span><span class="badge badge-blue">一般財団法人</span></div>
+  <div class="co-name">一般財団法人地域・教育魅力化プラットフォーム</div>
+  <div class="co-url"><a href="" target="_blank"></a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>設立</th><td>2017年3月</td></tr><tr><th>従業員数</th><td>35人</td></tr><tr><th>業種</th><td>サービス・レジャー</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>NPO・地域実践でやっていた教育改革を、国レベルへ拡張する挑戦的なポジション</li><li>都道府県単位での教育改革構想の設計という大規模なインパクトを創出可能</li><li>20名前後のチームを統括する事業責任者候補としてのキャリア形成</li><li>行政・教育・地域産業を横断する幅広いステークホルダーとの連携</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">都道府県・自治体・教育委員会と連携し、高校教育改革プロジェクトの戦略設計から実行までを統括。地域全体の教育構想を描き、多様なステークホルダーを巻き込みながら教育改革を推進する挑戦的なポジションです。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>地域経営インフラとして教育改革を再設計する</strong></p><p>一部のNPO・地域実践でやっていた教育改革を、国レベルへ拡張していく革新的な取り組みです。都道府県・自治体・教育委員会と連携し、高校教育改革プロジェクトの戦略設計から実行までを統括するポジションです。</p><p>単なる学校伴走ではなく、地域全体の教育構想を描き、行政・学校・地域産業・民間企業など多様なステークホルダーを巻き込みながら、教育改革を推進していただきます。</p><p>本ポジションはプレイヤー業務に留まらず、20名前後の営業・プロジェクト推進・伴走チームを横断的にマネジメントし、案件獲得・品質管理・組織づくりまで担う事業責任者候補の位置づけです。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 教育改革プロジェクト　ディレクター【高校教育改革プロジェクト戦略設計〜実行まで】</div>
+          <div class="job-preview">都道府県単位での教育改革構想を設計し、20名前後のチームを統括する事業責任者候補</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容</strong></p><p><strong>1. 教育改革プロジェクトの戦略設計</strong></p><ul><li>都道府県単位での教育改革構想の設計</li><li>KPI設計／ロードマップ策定</li><li>高校魅力化・探究学習等の施策立案</li><li>教育DX推進</li><li>成果検証／改善提案</li></ul><p><strong>2. 都道府県教育委員会との折衝</strong></p><ul><li>都道府県教育委員会との協議・提案</li><li>教育行政との合意形成</li><li>行政向け提案資料作成</li><li>次年度提案／案件継続提案</li></ul><p><strong>3. 調査・分析</strong></p><ul><li>高校・自治体ヒアリング</li><li>地域課題分析（人口動態・産業構造等）</li><li>アンケート設計／分析</li><li>定量・定性データ分析</li><li>有識者ヒアリング</li></ul><p><strong>4. 組織・チームマネジメント</strong></p><ul><li>営業・デリバリーチーム（20名前後）のマネジメント</li><li>業務委託メンバーを含む体制構築</li><li>プロジェクト品質管理</li><li>KPIマネジメント</li><li>メンバー育成・評価</li><li>ナレッジマネジメント</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>以下いずれかの経験：公共系コンサルティング経験、教育行政／自治体関連業務経験、教育事業の企画・推進経験、シンクタンク／リサーチ業務経験、教育スタートアップ等での事業推進経験</li><li>10名以上の組織マネジメント経験</li><li>複数プロジェクトの統括経験</li><li>行政・自治体との折衝経験</li><li>課題設定・構造化能力</li><li>仮説思考</li><li>プロジェクトマネジメント</li><li>ステークホルダー調整</li><li>ファシリテーション</li><li>提案資料作成能力</li><li>定量／定性分析能力</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>文部科学省／教育委員会経験</li><li>公共領域コンサルティングファーム経験</li><li>地方創生関連事業経験</li><li>教育DX推進経験</li><li>PMO構築経験</li><li>業務委託組織マネジメント経験</li><li>教育政策関連業務経験</li></ul><p><strong>求める人物像</strong></p><ul><li>複雑な課題を構造的に整理できる方</li><li>抽象度の高い議論を具体施策に落とし込める方</li><li>戦略だけでなく現場にも入り込める方</li><li>行政・教育現場から信頼を得られる方</li><li>プレイヤーではなく「組織で成果を出す」視点を持つ方</li><li>品質基準を引き上げられる方</li><li>カオスな状況でも前進できる方</li><li>教育・地域・社会課題への関心が高い方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京または島根</span><span class="pill">🏠 フルリモート可</span><span class="pill">💰 600-1000万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">シニアマーケティングプロデューサー</span><span class="badge badge-blue">非上場</span></div>
+  <div class="co-name">株式会社キズキ</div>
+  <div class="co-url"><a href="" target="_blank"></a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>設立</th><td>2015年7月13日</td></tr><tr><th>従業員数</th><td>1483名（内正社員151名）</td></tr><tr><th>業種</th><td>サービス・レジャー</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>「何度でもやり直せる社会をつくる」という強いミッションドリブンな環境</li><li>毎年150%で売上成長している急成長ベンチャー企業</li><li>社会貢献領域で年収800万円以上の高待遇を実現</li><li>マーケティングの力で誰かの人生を変える手応えを感じられる仕事</li><li>20代〜30代が7割以上の若手中心の活気ある組織</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「何度でもやり直せる社会をつくる」ことを目指し、うつや発達障害などで困難を抱える方に伴走する教育・福祉ベンチャー。マーケティングの力で社会課題解決に挑む、意義深いポジションです。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>社会課題を、数字と戦略で前に進める</strong></p><p>株式会社キズキは、「何度でもやり直せる社会をつくる」ことを目指し、毎年150%で売上成長している教育・福祉ベンチャーです。</p><p>うつや発達障害で離職した方のキャリア支援を行う「キズキビジネスカレッジ」、不登校・中退・引きこもりの方向けの学習塾「キズキ共育塾」など、困難を抱える方に伴走する事業を展開しています。</p><p><strong>なぜ、社会貢献領域で年収800万円以上を出せるのか？</strong></p><p>キズキは「想いのある人が、プロとして長く働ける社会貢献」を実現するため、事業として持続・成長できる構造づくりを重視してきました。マーケティングを集客業務に留めず、事業成長の中核に据え、成果と責任に向き合う人材には年収800万円以上を提示しています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【関東】マーケティング本部　シニアマーケティングプロデューサー（正社員）</div>
+          <div class="job-preview">うつや発達障害で離職した方のキャリア支援事業のマーケティング戦略を統括する責任者</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>仕事概要</strong></p><p>うつや発達障害などで離職をした方のキャリア支援を行う事業、就労支援事業「キズキビジネスカレッジ」の認知・集客・信頼形成を担う、社会を動かす職種です。</p><p>当ポジションは、キズキビジネスカレッジのマーケティング戦略を企画〜実行〜改善まで一貫してリードする責任者として、事業成長へのインパクトを最大化します。特にKPI設計、施策立案、データ分析、チーム／プロジェクトマネジメントまでを担うミドル〜シニア層のポジションです。</p><p><strong>主な業務内容</strong></p><ul><li>事業戦略に基づいたマーケティングプランの立案と推進</li><li>デジタル広告（SNS/検索/ディスプレイ）における戦略設計とパフォーマンス最適化</li><li>Web解析（GA4、ヒートマップ等）に基づく改善施策の立案・実行</li><li>コンテンツ施策（メール、オウンドメディア等）によるリード育成戦略</li><li>クロスファンクショナルチームおよび外部パートナーとの調整・進行管理</li><li>チームメンバーの育成・マネジメント（目標設定・評価・育成支援）</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>Webマーケティング実務経験（戦略立案〜実行改善）5年以上</li><li>デジタル施策（広告／コンテンツ）におけるPDCA推進経験</li><li>データ分析に基づく施策改善の実務経験（GA4 等）</li><li>複数部署／ステークホルダーとの折衝・プロジェクト推進経験</li><li>KPI設計〜効果測定の実務経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>広告コピー・コンテンツライティングの経験</li><li>動画広告・ショート動画の企画・ディレクション経験</li><li>ノーコードツール（WordPress、Shopify、STUDIOなど）の活用経験</li><li>CRMツール（HubSpot、Salesforce、LINE公式アカウントなど）の運用経験</li><li>UI/UX改善経験</li><li>各種ツールを活用したデータ分析スキル</li></ul><p><strong>求める人物像</strong></p><ul><li>マーケティングを通じて社会貢献をしたい方</li><li>数字・データドリブンで戦略〜実行を推進できる方</li><li>事業成長へのコミットメントを持ち、主体的に行動できる方</li><li>多様なステークホルダーと協業しながらプロジェクトを完遂できる方</li><li>変化の激しいデジタルマーケティングの世界で、新しい技術や手法を学び続けられる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 リモートワークOK</span><span class="pill">✅ 副業条件付き可</span><span class="pill">💰 864-1200万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://shigeoka-morich.github.io/jobs/Kizuki_Marketer.html" target="_blank">🔗 求人票詳細</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">法人戦略企画部門責任者</span><span class="badge badge-blue">非上場</span></div>
+  <div class="co-name">株式会社Schoo</div>
+  <div class="co-url"><a href="" target="_blank"></a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>設立</th><td>2011年10月3日</td></tr><tr><th>資本金</th><td>6億7621万420円 ※ 2025年2月時点</td></tr><tr><th>従業員数</th><td>250名</td></tr><tr><th>業種</th><td>IT・通信・インターネット</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>「世の中から卒業をなくす」というミッションのもと、累計4,000社を超える企業にサービス提供</li><li>日経225の大企業からスタートアップまで幅広い顧客基盤</li><li>フルリモート可能な柔軟な働き方</li><li>法人事業の成長エンジンを設計・推進する戦略的ポジション</li><li>週4日勤務正社員制度など、多様な働き方をサポート</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「世の中から卒業をなくす」というミッションのもと、累計4,000社を超える企業に法人向けオンライン学習サービスを提供。事業をさらなる成長フェーズへ引き上げる戦略統括ポジション。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>学び続ける大人を増やす、成長企業での戦略統括</strong></p><p>株式会社Schooは「世の中から卒業をなくす」というミッションのもと、累計4,000社を超える企業に法人向けオンライン学習サービス「Schoo for Business」を提供し、学び続ける大人を増やしてきました。</p><p>日経225の大企業からスタートアップ・地域の中小企業まで、導入企業の規模と業種は年々多様化しています。その分、顧客セグメントごとの戦略設計・プロダクトへの要求・価格設計・営業プロセスの複雑さも増しており、「現場の実行力」だけでなく「経営に直結する戦略機能」の強化が急務となっています。</p><p>事業をさらなる成長フェーズへ引き上げるにあたり、法人事業の戦略を統括するポジションを担っていただける方を求めています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【法人セールス】法人戦略企画部門責任者　※コンフィデンシャル</div>
+          <div class="job-preview">売上・顧客・データを横断的に束ね、Schooの成長エンジンを設計・推進する戦略統括役割</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容</strong></p><p><strong>1. 事業戦略策定・実行</strong></p><ul><li>中長期事業戦略の立案および経営への提案</li><li>アライアンス戦略の企画・推進（パートナー企業との関係構築含む）</li><li>新サービス・新規事業の戦略設計と実行支援</li></ul><p><strong>2. プロダクト戦略・ロードマップ企画</strong></p><ul><li>顧客ニーズ・競合動向の分析に基づくプロダクト要求仕様の策定</li><li>差別化戦略の立案と、プロダクト部門との連携推進</li><li>ROI・ビジネスインパクトの定量評価</li><li>価格戦略の設計と継続的な最適化</li></ul><p><strong>3. 営業戦略企画</strong></p><ul><li>顧客セグメント別の営業戦略策定（SMB・中堅・エンタープライズ）</li><li>営業プロセスの標準化・効率化とコンバージョン率改善</li><li>営業KPIの設計・モニタリング・改善サイクルの整備</li></ul><p><strong>4. データ活用基盤の構築</strong></p><ul><li>データドリブンな意思決定を支える分析基盤の整備</li><li>チャーン予測・LTV予測モデルの構築と事業判断への活用</li><li>売上予測・需要予測の精度向上と事業計画への組み込み</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>事業戦略企画の策定から実行までの一連の経験</li><li>事業企画・営業企画・商品企画いずれかの責任者経験</li><li>メンバーマネジメント経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>SQL/Tableau等のデータ分析ツール使用経験</li><li>Salesforce等のCRM/SFA活用経験</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 フルリモート可</span><span class="pill">✅ 副業可</span><span class="pill">💰 1000-1400万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">事業企画・新規事業 マネージャー</span><span class="badge badge-blue">非上場</span></div>
+  <div class="co-name">株式会社ポピンズシッター</div>
+  <div class="co-url"><a href="" target="_blank"></a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>設立</th><td>2014年07月02日</td></tr><tr><th>資本金</th><td>9,750万円</td></tr><tr><th>従業員数</th><td>25名（2024年7月現在）</td></tr><tr><th>業種</th><td>サービス・レジャー</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>スマートフォンから予約できる派遣型ベビーシッターサービスで業界シェアトップクラス</li><li>保育業界で30年以上の歴史があるポピンズグループの一員としての安定性</li><li>ペットケア・家事代行などの新規サービス立ち上げに関われる</li><li>社会貢献性の高い子育て支援サービス</li><li>助け合いの精神がある優しいメンバーが多い職場環境</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">スマートフォンから予約できる派遣型ベビーシッターサービス『ポピンズシッター』を運営。保育業界で30年以上の歴史があるポピンズグループの一員として、業界シェアトップクラスを誇る企業。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>子育て支援で社会を変える、成長企業での事業推進</strong></p><p>株式会社ポピンズシッターは、スマートフォンから予約できる派遣型ベビーシッターサービス『ポピンズシッター』を運営しています。保育業界で30年以上の歴史があるポピンズグループの一員として、厳正な面談・研修を経て契約したベビーシッターと利用者をマッチングしています。</p><p>保育園・幼稚園への送迎、病児保育、産前産後ケア、育児相談などの保育サービスを提供し、業界シェアトップクラスを誇っています。また、ペット支援サービス『ポピンズペットケア』も運営し、新たな領域への展開も積極的に行っています。</p><p>既存のベビーシッター事業は順調に拡大している一方で、ペットケア・家事代行などの新規サービス立ち上げも同時並行で進行中です。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業企画・新規事業 マネージャー</div>
+          <div class="job-preview">既存事業のグロース推進と新規事業立ち上げを統括するマネージャーポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>組織構成</strong></p><ul><li>既存事業企画：3名（うちマネージャー1名は産休中）</li><li>新規事業担当：1名</li><li>※現状、事業責任者へメンバーが直接レポートする体制</li></ul><p><strong>募集背景・課題</strong></p><p>既存のベビーシッター事業は順調に拡大している一方で、ペットケア・家事代行などの新規サービス立ち上げも同時並行で進行中。事業責任者1名で全体を統括することに限界が生じており、構造的な分担・推進体制の強化が急務。</p><p><strong>ミッション</strong></p><ul><li>既存事業のグロース推進</li><li>新規事業の立ち上げリード</li><li>事業横断での戦略・実行のハンズオン推進</li></ul><p><strong>求める人物像</strong></p><p>「社会貢献がしたい」「誰かの役に立ちたい」という優しいメンバーが多く、助け合いの精神がある方</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業条件付き可</span><span class="pill">💰 800-1000万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが伴祐次 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
